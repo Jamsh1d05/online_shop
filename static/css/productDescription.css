@@ -1,0 +1,17 @@
+.productContainer {
+	display: flex;
+	justify-content: space-between;
+	height: 395px;
+}
+
+.productInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 6;
+}
+
+.productImage {
+	display: flex;
+	flex: 4;
+}

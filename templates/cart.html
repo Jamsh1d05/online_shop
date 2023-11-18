@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+	  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap"
+	  rel="stylesheet"
+	/>
+	<script
+	  src="https://kit.fontawesome.com/d9ff775a80.js"
+	  crossorigin="anonymous"
+	></script>
+
+	<title>Cart</title>
+	<link rel="icon" type="image/png" href="static/images/icon_bag.png">
+	 <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }} />
+	 <link rel="stylesheet" href={{ url_for('static', filename='css/cart.css')
+	}} />
+</head>
+<body>
+	{% include 'navbar.html' %}	
+
+<div id="cartItems" class="container">
+	<h2>Shopping Cart</h2>
+	<div id="tableItems">
+		<div class="itemsCart">
+			{% for row in products %}
+			
+				<hr id="seperator">
+				<div class="itemCart">
+					<div id="itemImage">
+						<img src={{url_for('static', filename='uploads/'+row[3])}} id="image"/>
+					</div>
+					<div class="itemDesc">
+						<div id="itemPrice">
+							<strong>
+							${{row[2]}}
+						</strong>
+						</div>
+						<div id="itemName">
+							<span id="itemNameTag">{{row[1]}}</span><br>
+							In stock<br>
+							
+						</div>
+						<a href="/removeFromCart?productId={{row[0]}}" class="removeLink">Remove</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		
+		<div id="total">
+			<hr id="seperator">
+			<span id="subtotal">Subtotal: ${{totalPrice}}</span> 
+			<button  class="primaryButton"  id="checkoutButton">Proceed To Checkout</button>
+		</div>
+	</div>
+</div>
+
+<!-- Payment process -->
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var checkoutButton = document.getElementById('checkoutButton');
+
+    checkoutButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        var amount = "{{ totalPrice }}"; 
+        var handler = StripeCheckout.configure({
+            key: 'pk_test_51ODWZbB9z80HWnKMfcLCE0amjKZjNbBtparUtGGdcCAtEHVNQyMjb0iKxuNnK5ygtNtfddzyRRSNngrCF1FRQ2xC00kBCYWy0q',
+            locale: 'auto',
+        });
+
+        handler.open({
+            name: 'Online shop',
+            description:'{% for row in products %}{{row[1]}}{% endfor %}',
+            amount: amount * 100, 
+            zipCode: true,
+            currency: 'usd',
+            panelLabel: 'Pay {{amount}}',
+            allowRememberMe: false, 
+        });
+    });
+});
+
+</script>
+</body>
+</html>
+

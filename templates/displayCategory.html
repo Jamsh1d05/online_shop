@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{categoryName}}</title>
+    <link rel="icon" type="image/png" href="static/images/icon_bag.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/d9ff775a80.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href={{ url_for('static',
+    filename='css/normalize.css') }} /> <link rel="stylesheet" href={{
+    url_for('static', filename='css/displayCategory.css') }} />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    <section class="mainSection container">
+      <div class="category">
+        <a href="#" class="categoryName">{{categoryName}}</a>
+        <p class="categoryDesc">{{categoryDesc}}</p>
+      </div>
+      {% for itemData in data %}
+      <div class="products">
+        {% for row in itemData %}
+        <div class="product">
+          <div id="itemImage">
+            <a href="/productDescription?productId={{row[0]}}">
+              <img src={{ url_for('static', filename='uploads/' + row[3]) }}/>
+            </a>
+          </div>
+          <h3>{{row[1]}}</h3>
+          <h5>${{row[2]}}</h5>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </section>
+  </body>
+</html>

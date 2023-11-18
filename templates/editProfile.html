@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+	  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap"
+	  rel="stylesheet"
+	/>
+	<script
+	  src="https://kit.fontawesome.com/d9ff775a80.js"
+	  crossorigin="anonymous"
+	></script>
+
+	<title>Profile</title>
+	<link rel="icon" type="image/png" href="static/images/icon_bag.png">
+	<link rel="stylesheet" href={{ url_for('static', filename='css/profile.css')
+	}} /> <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }} />
+</head>
+<body>
+	{% include 'navbar.html' %}	
+
+
+<div class="profileContainer container">
+	<div class="sideNav">
+		<div>
+            <i class="fa-solid fa-user"></i> 
+            <a href="/account/profile">Hello, {{firstName}}!</a>
+        </div>
+		<div>
+            <i class="fa-brands fa-shopify"></i>
+            <a href="/account/profile/orders"></i> My Orders</a>
+        </div>
+        <div>
+            <i class="fa-regular fa-id-card"></i>
+            <a href="/account/profile/edit"> My Details</a>
+        </div>
+		<div>
+            <i class="fa-solid fa-lock"></i>
+            <a href="/account/profile/changePassword"> Change password</a>
+        </div>
+		<div>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <a href="/logout"> Sign Out</a>
+        </div>
+	</div>
+	<div class="aside">
+		<h1>MY DETAILS</h1>
+		<form action="/updateProfile" method="POST" class="editProfileForm">
+			<div class="inputHolder">Email:<input type="email" name="email" value={{profileData[1]}} readonly="readonly" class="input"></div>
+			<div class="inputWrapper">
+				<div class="inputHolder">First Name:<input type="text" name="firstName" value={{profileData[2]}} class="input"></div>
+				<div class="inputHolder">Last Name: <input type="text" name="lastName" value={{profileData[3]}} class="input"></div>
+			</div>
+			<div class="inputHolder">Address 1: <input type="text" name="address1" value={{profileData[4]}} class="input"></div>	
+			<div class="inputHolder">Address 2: <input type="text" name="address2" value={{profileData[5]}} class="input"></div>
+			<div class="inputHolder">Zip Code: <input type="text" name="zipcode" value={{profileData[6]}} class="input"></div>
+			<div class="inputHolder">City: <input type="text" name="city" value={{profileData[7]}} class="input"></div>
+			<div class="inputHolder">State: <input type="text" name="state" value={{profileData[8]}} class="input"></div>
+			<div class="inputHolder">Country: <input type="text" name="country" value={{profileData[9]}} class="input"></div>
+			<div class="inputHolder">Phone Number: <input type="text" name="phone" value={{profileData[10]}} class="input"></div>
+			<input class="submit primaryButton" type="submit" value="Save">
+		</form>
+	</div>
+</div>
+</body>
+</html>
+
+
+

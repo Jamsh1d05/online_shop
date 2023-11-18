@@ -1,0 +1,45 @@
+#tableItems {
+	display: flex;
+	flex-direction: row;
+}
+
+.itemsCart {
+	display: flex;
+	flex-direction: column;
+	margin-right: 50px;
+}
+
+#total {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.itemCart {
+	display: flex;
+	gap: 20px;
+}
+
+#itemImage {
+	height: 400px;
+	width: 300px;
+	object-fit: cover;
+}
+
+.itemDesc {
+	margin: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.removeLink {
+	color: black;
+	width: max-content;
+	transition: all .8s ease-in-out;
+	border-bottom: 1px solid transparent;
+}
+
+.removeLink:hover {
+	border-bottom: 1px solid black;
+}

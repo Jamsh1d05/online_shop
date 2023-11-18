@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Online market</title>
+<link rel="icon" type="image/png" href="static/images/icon_bag.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/d9ff775a80.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+</head>
+<body>
+	
+	{% include 'navbar.html' %}
+	
+	<section class="mainSection container">
+		<div class="topMain">
+		<h3>Get Them Before They're Gone!</h3>
+		<div class="slider-wrapper">
+			<button id="prev-slide" class="slide-button material-symbols-rounded">
+				<i class="fa-solid fa-chevron-left"></i>
+			</button>
+			<ul class="image-list">
+			  {% for data in itemData %}
+				{% for row in data %}
+					<a href="/productDescription?productId={{row[0]}}"><img class="image-item" src={{ url_for('static', filename='uploads/' + row[4]) }}/></a>
+				{% endfor %}
+				{% endfor %}
+			</ul>
+			<button id="next-slide" class="slide-button material-symbols-rounded">
+				<i class="fa-solid fa-chevron-right"></i>
+			</button>
+		  </div>
+		  <div class="slider-scrollbar">
+			<div class="scrollbar-track">
+			  <div class="scrollbar-thumb"></div>
+			</div>
+		  </div>
+		  <a href="#bottomMain" class="primaryButton">View All</a>
+		</div>
+		<h3 id="bottomMain">Our Products</h3>
+		<div class="products">
+			
+			{% for data in itemData %}
+				{% for row in data %}
+				<div class="product">
+					<div id="itemImage">
+						<a href="/productDescription?productId={{row[0]}}">
+							<img src={{ url_for('static', filename='uploads/' + row[4]) }}/>
+						</a>
+					</div>	
+					<h3>{{row[1]}}</h3>
+					<h5>${{row[2]}}</h5>
+				</div>
+				{% endfor %}
+			{% endfor %}
+		</div>
+		
+	
+	</section>
+	
+	<footer>
+		<div id="social">
+
+		</div>
+		<div id="rights">
+			All rights reserved &copy;    2023
+		</div>
+	</footer>
+	<script type="text/javascript" src={{ url_for('static', filename = 'js/home.js') }}></script>
+</body>
+</html>
+

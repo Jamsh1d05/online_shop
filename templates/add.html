@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/d9ff775a80.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="static/images/icon_bag.png">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/login.css')
+    }} /> <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }} />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    <div class="login">
+		
+		<form action="/addItem" method="POST" enctype="multipart/form-data" class="registrationForm addForm">
+			<h1>ADD NEW ITEM</h1>
+			<div><input type="text" name="name" placeholder="Name" class="input"></div>
+			<div><input type="text" name="price" placeholder="Price" class="input"></div>
+			<div><textarea name="description" rows=3 cols="40" placeholder="Description" class="input"></textarea></div>
+			<div><input type="file" name="image" placeholder="Image" class="input"></div>
+			<div><input type="text" name="stock" placeholder="Stock" class="input"></div>
+			<div><select name="category" class="input">
+				{% for row in categories %}
+					<option value="{{row[0]}}">{{row[1]}}</option>
+				{% endfor %}
+			</select></div>
+			<input type="submit" class="primaryButton" value="Add">
+		</form>
+    </div>
+  </body>
+</html>

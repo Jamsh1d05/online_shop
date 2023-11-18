@@ -1,0 +1,80 @@
+.sideNav {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    flex: 3;
+}
+
+.sideNav div{
+    display: flex;
+    gap: 10px;
+}
+ 
+.aside {
+    flex: 7;
+}
+
+.profileContainer {
+    display: flex;
+}
+
+.input {
+    flex: 1;
+    padding: 9px 14px;
+    margin: 10px 0;
+    max-width: 700px;
+}
+
+.primaryButton {
+    text-align: center;
+    width: 230px;
+    max-width: 700px;
+    margin-top: 10px;
+}
+
+.changePasswordForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputHolder{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.inputWrapper {
+    width: 732px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.sideNav a {
+    color: black;
+    width: max-content;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    transition: all .8s ease-in-out;
+}
+
+.sideNav a:hover {
+    border-bottom: 1px solid black;
+}
+
+.noOrders {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+
+    align-items: self-start;
+}
+
+.noOrders div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.noOrders i {
+    font-size: 36px;
+}

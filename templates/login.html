@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/d9ff775a80.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="static/images/icon_bag.png">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/login.css')
+    }} /> <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }} />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    <div class="login">
+      <form action="/login" method="POST" class="loginForm">
+        <h1>SIGN IN</h1>
+        <p>{{error}}</p>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Email"
+          class="input"
+        />
+
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          class="input"
+        />
+        <input class="submit primaryButton" type="submit" value="Sign In" />
+        <a class="regLink" href="/registerationForm">Create account</a>
+      </form>
+    </div>
+  </body>
+</html>

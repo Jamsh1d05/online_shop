@@ -1,0 +1,33 @@
+<div id="navbar">
+<div class="topNavbar">
+    <div class="topNavbar-inner container">
+        {% if not loggedIn %}
+        <a class="link" href="/loginForm"><i class="fa-solid fa-user"></i></a>
+        {% else %}
+        <a href="/account/profile"><i class="fa-solid fa-user"></i></a>
+        {% endif %}
+        {% if not loggedIn %}
+        <a href="/loginForm"><i class="fa-solid fa-bag-shopping"></i></a>
+        {% else %}
+        <a href="/account/profile/orders"><i class="fa-solid fa-bag-shopping"></i></a>
+        {% endif %}
+        <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        <span><a href="/cart">{{noOfItems}}</a></span>
+    </div>
+</div>
+<nav class="navbar" id="navv">
+    <div class="navbar-inner container">
+        <div class="navigation">
+            <a href="/">Home</a>
+            {% for row in categoryData %}
+            <a href="/displayCategory?categoryId={{row[0]}}">{{row[1]}}</a>
+            {% endfor %}
+        </div>
+        <form id="searchForm">
+            <input id="searchBox" type="text" name="searchQuery" placeholder="Search">
+            <a href="#"><i class="searchIcon fa-solid fa-magnifying-glass"></i></a>
+        </form>
+    </div>
+</nav>
+</div>
+<script type="text/javascript" src={{ url_for('static', filename = 'js/script.js') }}></script>

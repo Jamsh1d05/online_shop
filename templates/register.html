@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap"
+          rel="stylesheet"
+        />
+        <script
+          src="https://kit.fontawesome.com/d9ff775a80.js"
+          crossorigin="anonymous"
+        ></script>
+    
+        <title>Registration</title>
+        <link rel="icon" type="image/png" href="static/images/icon_bag.png">
+        <link rel="stylesheet" href={{ url_for('static', filename='css/login.css')
+        }} /> <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }} />
+      </head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="login">
+        <form action="/register" method="POST" onsubmit="return validate()" class="registrationForm">
+            <h1>SIGN UP</h1>
+            
+            <div>
+                <input type="text" name="firstName" placeholder="First Name" class="input">
+                <input type="text" name="lastName" placeholder="Last Name" class="input">
+            </div>
+            <div>
+            <input type="email" name="email" placeholder="Email" class="input">
+            </div>
+            <div>
+                <input type="password" name="password" id="password" required placeholder="Create Password" class="input">
+                <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" class="input">
+            </div>
+            <div>
+            <input type="text" name="phone" placeholder="Phone Number" class="input">
+            </div>
+            <div>
+                <input type="text" name="address1" placeholder="Address Line 1" class="input">
+                <input type="text" name="address2" placeholder="Address Line 2" class="input">
+                
+            </div>
+            <div>
+                <input type="text" name="zipcode" placeholder="Zipcode" class="input">
+            </div>
+            <div>
+                <input type="text" name="city" placeholder="City" class="input">
+                <input type="text" name="state" placeholder="State" class="input">
+                
+            </div>
+            <div>
+                <input type="text" name="country" placeholder="Country" class="input">
+            </div>
+            <input class="submit primaryButton" type="submit" value="Sign Up">
+
+            <a class="regLink" href="/loginForm">Login here</a>
+        </form>
+    </div>
+    <script type="text/javascript" src={{ url_for('static', filename = 'js/validateForm.js') }}>
+    </script>
+</body>
+</html>
+
+
+
